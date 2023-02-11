@@ -28,14 +28,11 @@ const botui = createBot();
 const sessionId = nanoid(10);
 
 const getNdSetLexRes = async () => {
-  const { value } = await botui.action.set(
-    { placeholder: "What is the registration fee?" },
-    { actionType: "input" }
-  );
+  const { value } = await botui.action.set({}, { actionType: "input" });
 
   const lexCmd = new RecognizeTextCommand({
     botId: import.meta.env.VITE_BOT_ID,
-    botAliasId: "TSTALIASID",
+    botAliasId: import.meta.env.VITE_BOT_ALIAS_ID,
     localeId: "en_US",
     sessionId,
     text: value,
