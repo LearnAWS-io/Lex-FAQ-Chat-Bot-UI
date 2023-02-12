@@ -55,19 +55,25 @@ const setupBot = async () => {
   //   console.log(e);
   // });
   await botui.wait({ waitTime: 500 });
-  await botui.message.add({ text: `Hey there my friend, what's your name?` });
+  await botui.message.add({ text: `Hey there my friend 👋` });
 
-  await botui.wait({ waitTime: 500 });
-
-  const { value: name } = await botui.action.set(
-    { placeholder: "Shivam" },
-    { actionType: "input" }
-  );
-
-  botui.message.add({ text: `Hello ${name}` });
   await botui.wait({ waitTime: 500 });
   await botui.message.add({ text: `How can I help you today?` });
+  await botui.message.add(
+    {
+      links: [
+        {
+          text: "Apply for internship",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSe4muh7BGiz-3Ol-n6ViPfMdT9UW75IEGreZx74JAPkot-T0A/viewform",
+        },
+      ],
+    },
+    { messageType: "links" }
+  );
 
+  await botui.message.add({
+    text: `To book an industrial visit type: Book a visit`,
+  });
   getNdSetLexRes();
 };
 
